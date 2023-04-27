@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import ManageExpense from './screens/ManageExpense';
 import Tabs from './navigation/tabs';
+import { GlobalStyles } from './constants/styles';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,9 +13,14 @@ export default function App() {
     <>
       <StatusBar style="light" />
       <NavigationContainer>
-        <Stack.Navigator >
+        <Stack.Navigator screenOptions={{
+          headerStyle : {backgroundColor: GlobalStyles.colors.primary500},
+          headerTintColor: 'white'
+        }} >
           <Stack.Screen name='tabs' component={Tabs}  options={{headerShown : false}}/>
-          <Stack.Screen name='ManageExpense' component={ManageExpense} />
+          <Stack.Screen name='ManageExpense' component={ManageExpense}  options={{
+            presentation: 'modal'
+          }}/>
         </Stack.Navigator>
       </NavigationContainer>
     </>

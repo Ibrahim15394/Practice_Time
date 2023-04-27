@@ -3,6 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { GlobalStyles } from "../constants/styles";
 import AllExpenses from "../screens/AllExpenses";
 import RecentExpenses from "../screens/RecentExpenses";
+import IconButton from "../Ui/IconButton";
 
 
 
@@ -12,7 +13,7 @@ const Tab = createBottomTabNavigator();
 
 function Tabs() {
     return (
-        <Tab.Navigator screenOptions={{
+        <Tab.Navigator screenOptions={({navigation}) => ({
             headerStyle: {
                 backgroundColor: GlobalStyles.colors.primary500,
             },
@@ -20,9 +21,10 @@ function Tabs() {
             tabBarStyle: { backgroundColor: GlobalStyles.colors.primary500 , height: '8%' },
             tabBarActiveTintColor: GlobalStyles.colors.primary200,
             tabBarLabelStyle:{padding: 5},
+            headerRight : ({tintColor}) => <IconButton icon = 'add' size={32} color= {tintColor} onPress={() => navigation.navigate('ManageExpense')}/>
 
 
-        }}>
+        })}>
             <Tab.Screen name="Recent" component={RecentExpenses} options={{
                 title: 'Recent Expenses',
                 tabBarLabel: 'Recent',
