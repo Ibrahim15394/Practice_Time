@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import ManageExpense from './screens/ManageExpense';
 import Tabs from './navigation/tabs';
 import { GlobalStyles } from './constants/styles';
+import ExpenseContextProvider from './store/expense-context';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +13,7 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
+      <ExpenseContextProvider>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{
           headerStyle : {backgroundColor: GlobalStyles.colors.primary500},
@@ -23,6 +25,7 @@ export default function App() {
           }}/>
         </Stack.Navigator>
       </NavigationContainer>
+      </ExpenseContextProvider>
     </>
   );
 }
