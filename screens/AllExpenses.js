@@ -3,13 +3,15 @@ import ExpensesOutput from "../components/ExpensesOutput/ExpensesOutput";
 import { DUMMY_EXPENSES } from "../data/DummyExpenses";
 import { useContext } from "react";
 import { ExpenseContext } from "../store/expense-context";
+import { useSelector } from "react-redux";
 
 function AllExpenses(){
+    // const expensesContext = useContext(ExpenseContext);
+    // const expenseReducer = useSelector((state) => state.expenseReducer.expenses)
 
-    const expensesContext = useContext(ExpenseContext);
 
     return(
-        <ExpensesOutput expenses={expensesContext.expenses} expensesPeriod= ' Total'/>
+        <ExpensesOutput   expensesPeriod= ' Total'/> //expenses={expensesContext.expenses}
     );
 }
 
